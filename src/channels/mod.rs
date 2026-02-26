@@ -529,15 +529,14 @@ async fn handle_runtime_command_if_needed(
             clear_sender_history(ctx, &sender_key);
             "Session reset. A new conversation has started.".to_string()
         }
-        ChannelRuntimeCommand::ShowHelp => {
-            "Available runtime commands:\n\
+        ChannelRuntimeCommand::ShowHelp => "Available runtime commands:\n\
              • `/models` - Show available providers\n\
              • `/models <provider>` - Switch current provider\n\
              • `/model` - Show current model\n\
              • `/model <model-id>` - Switch current model\n\
              • `/new` - Reset session history\n\
-             • `/help` - Show this help message".to_string()
-        }
+             • `/help` - Show this help message"
+            .to_string(),
     };
 
     if let Err(err) = channel
@@ -1746,8 +1745,10 @@ pub async fn start_channels(config: Config) -> Result<()> {
         tracing::warn!("Provider warmup failed (non-fatal): {e}");
     }
 
-    let observer: Arc<dyn Observer> =
-        Arc::from(observability::create_observer(&config.observability, &config.workspace_dir));
+    let observer: Arc<dyn Observer> = Arc::from(observability::create_observer(
+        &config.observability,
+        &config.workspace_dir,
+    ));
     let runtime: Arc<dyn runtime::RuntimeAdapter> =
         Arc::from(runtime::create_runtime(&config.runtime)?);
     let security = Arc::new(SecurityPolicy::from_config(

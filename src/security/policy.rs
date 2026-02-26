@@ -510,7 +510,10 @@ impl SecurityPolicy {
                 } else {
                     allowed.clone()
                 };
-                expanded.starts_with(&allowed_expanded) || expanded.to_lowercase().starts_with(&allowed_expanded.to_lowercase())
+                expanded.starts_with(&allowed_expanded)
+                    || expanded
+                        .to_lowercase()
+                        .starts_with(&allowed_expanded.to_lowercase())
             });
             if !is_allowed {
                 return false;

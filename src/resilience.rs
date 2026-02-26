@@ -1,7 +1,7 @@
-use std::path::{Path, PathBuf};
-use std::fs;
-use serde::{Deserialize, Serialize};
 use chrono::Utc;
+use serde::{Deserialize, Serialize};
+use std::fs;
+use std::path::{Path, PathBuf};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CrashInfo {
@@ -35,8 +35,13 @@ pub fn consume_crash(workspace_dir: &Path) -> Option<CrashInfo> {
 pub fn report_task(title: &str, detail: &str, workspace_dir: &Path) {
     let tasks_file = workspace_dir.join("RESILIENCE_TASKS.md");
     let timestamp = Utc::now().to_rfc3339();
-    let entry = format!("\n## [{}] {}\n\n- **Time**: {}\n- **Detail**: {}\n\n---",
-        if detail.contains("fatal") { "FATAL" } else { "RECOVERY" },
+    let entry = format!(
+        "\n## [{}] {}\n\n- **Time**: {}\n- **Detail**: {}\n\n---",
+        if detail.contains("fatal") {
+            "FATAL"
+        } else {
+            "RECOVERY"
+        },
         title,
         timestamp,
         detail
@@ -45,7 +50,8 @@ pub fn report_task(title: &str, detail: &str, workspace_dir: &Path) {
     let mut content = if tasks_file.exists() {
         fs::read_to_string(&tasks_file).unwrap_or_default()
     } else {
-        "# Resilience Tasks\n\nThis file tracks critical failures and auto-recovery events.\n".to_string()
+        "# Resilience Tasks\n\nThis file tracks critical failures and auto-recovery events.\n"
+            .to_string()
     };
 
     content.push_str(&entry);

@@ -1201,7 +1201,8 @@ pub async fn run(
     peripheral_overrides: Vec<String>,
 ) -> Result<String> {
     // ── Wire up agnostic subsystems ──────────────────────────────
-    let base_observer = observability::create_observer(&config.observability, &config.workspace_dir);
+    let base_observer =
+        observability::create_observer(&config.observability, &config.workspace_dir);
     let observer: Arc<dyn Observer> = Arc::from(base_observer);
     let runtime: Arc<dyn runtime::RuntimeAdapter> =
         Arc::from(runtime::create_runtime(&config.runtime)?);
@@ -1665,8 +1666,10 @@ pub async fn run(
 /// Process a single message through the full agent (with tools, peripherals, memory).
 /// Used by channels (Telegram, Discord, etc.) to enable hardware and tool use.
 pub async fn process_message(config: Config, message: &str) -> Result<String> {
-    let observer: Arc<dyn Observer> =
-        Arc::from(observability::create_observer(&config.observability, &config.workspace_dir));
+    let observer: Arc<dyn Observer> = Arc::from(observability::create_observer(
+        &config.observability,
+        &config.workspace_dir,
+    ));
     let runtime: Arc<dyn runtime::RuntimeAdapter> =
         Arc::from(runtime::create_runtime(&config.runtime)?);
     let security = Arc::new(SecurityPolicy::from_config(

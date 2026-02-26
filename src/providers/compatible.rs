@@ -199,6 +199,17 @@ impl OpenAiCompatibleProvider {
             })
             .collect()
     }
+
+    fn request_extra_body(&self) -> Option<serde_json::Value> {
+        // MiniMax recommends enabling reasoning_split for reasoning models in
+        // OpenAI-compatible mode so reasoning and tool calls are emitted in a
+        // stable, parseable shape.
+        if self.name.eq_ignore_ascii_case("MiniMax") {
+            Some(serde_json::json!({ "reasoning_split": true }))
+        } else {
+            None
+        }
+    }
 }
 
 #[derive(Debug, Serialize)]
@@ -212,6 +223,8 @@ struct ApiChatRequest {
     tools: Option<Vec<serde_json::Value>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     tool_choice: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    extra_body: Option<serde_json::Value>,
 }
 
 #[derive(Debug, Serialize)]
@@ -240,6 +253,10 @@ struct ResponseMessage {
     reasoning_content: Option<String>,
     #[serde(default)]
     tool_calls: Option<Vec<ToolCall>>,
+    /// Some providers (for example MiniMax reasoning models) return structured
+    /// reasoning metadata. Keep it for compatibility when present.
+    #[serde(default)]
+    reasoning_details: Option<serde_json::Value>,
 }
 
 impl ResponseMessage {
@@ -287,6 +304,8 @@ struct NativeChatRequest {
     tools: Option<Vec<serde_json::Value>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     tool_choice: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    extra_body: Option<serde_json::Value>,
 }
 
 #[derive(Debug, Serialize)]
@@ -784,6 +803,7 @@ impl OpenAiCompatibleProvider {
     }
 
     fn parse_native_response(message: ResponseMessage) -> ProviderChatResponse {
+        let text = message.effective_content_optional();
         let tool_calls = message
             .tool_calls
             .unwrap_or_default()
@@ -800,10 +820,7 @@ impl OpenAiCompatibleProvider {
             })
             .collect::<Vec<_>>();
 
-        ProviderChatResponse {
-            text: message.content,
-            tool_calls,
-        }
+        ProviderChatResponse { text, tool_calls }
     }
 
     fn is_native_tool_schema_unsupported(status: reqwest::StatusCode, error: &str) -> bool {
@@ -871,6 +888,7 @@ impl Provider for OpenAiCompatibleProvider {
             stream: Some(false),
             tools: None,
             tool_choice: None,
+            extra_body: self.request_extra_body(),
         };
 
         let url = self.chat_completions_url();
@@ -954,6 +972,7 @@ impl Provider for OpenAiCompatibleProvider {
             stream: Some(false),
             tools: None,
             tool_choice: None,
+            extra_body: self.request_extra_body(),
         };
 
         let url = self.chat_completions_url();
@@ -1054,6 +1073,7 @@ impl Provider for OpenAiCompatibleProvider {
             } else {
                 Some("auto".to_string())
             },
+            extra_body: self.request_extra_body(),
         };
 
         let url = self.chat_completions_url();
@@ -1085,7 +1105,7 @@ impl Provider for OpenAiCompatibleProvider {
                 let name = function.name?;
                 let arguments = function.arguments.unwrap_or_else(|| "{}".to_string());
                 Some(ProviderToolCall {
-                    id: uuid::Uuid::new_v4().to_string(),
+                    id: tc.id.unwrap_or_else(|| uuid::Uuid::new_v4().to_string()),
                     name,
                     arguments,
                 })
@@ -1116,6 +1136,7 @@ impl Provider for OpenAiCompatibleProvider {
             stream: Some(false),
             tool_choice: tools.as_ref().map(|_| "auto".to_string()),
             tools,
+            extra_body: self.request_extra_body(),
         };
 
         let url = self.chat_completions_url();
@@ -1232,6 +1253,7 @@ impl Provider for OpenAiCompatibleProvider {
             stream: Some(options.enabled),
             tools: None,
             tool_choice: None,
+            extra_body: self.request_extra_body(),
         };
 
         let url = self.chat_completions_url();
@@ -1373,6 +1395,7 @@ mod tests {
             stream: Some(false),
             tools: None,
             tool_choice: None,
+            extra_body: None,
         };
         let json = serde_json::to_string(&req).unwrap();
         assert!(json.contains("llama-3.3-70b"));
@@ -1705,6 +1728,7 @@ mod tests {
                 }),
             }]),
             reasoning_content: None,
+            reasoning_details: None,
         };
 
         let parsed = OpenAiCompatibleProvider::parse_native_response(message);
@@ -1827,11 +1851,29 @@ mod tests {
             stream: Some(false),
             tools: Some(tools),
             tool_choice: Some("auto".to_string()),
+            extra_body: None,
         };
         let json = serde_json::to_string(&req).unwrap();
         assert!(json.contains("\"tools\""));
         assert!(json.contains("get_weather"));
         assert!(json.contains("\"tool_choice\":\"auto\""));
+    }
+
+    #[test]
+    fn minimax_sets_reasoning_split_extra_body() {
+        let minimax = make_provider("MiniMax", "https://api.minimax.io/v1", Some("key"));
+        let extra = minimax
+            .request_extra_body()
+            .expect("expected MiniMax extra body");
+        assert_eq!(
+            extra
+                .get("reasoning_split")
+                .and_then(serde_json::Value::as_bool),
+            Some(true)
+        );
+
+        let non_minimax = make_provider("OpenAI", "https://api.openai.com/v1", Some("key"));
+        assert!(non_minimax.request_extra_body().is_none());
     }
 
     #[test]

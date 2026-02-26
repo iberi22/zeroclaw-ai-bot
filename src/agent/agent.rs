@@ -232,8 +232,10 @@ impl Agent {
     }
 
     pub fn from_config(config: &Config) -> Result<Self> {
-        let observer: Arc<dyn Observer> =
-            Arc::from(observability::create_observer(&config.observability, &config.workspace_dir));
+        let observer: Arc<dyn Observer> = Arc::from(observability::create_observer(
+            &config.observability,
+            &config.workspace_dir,
+        ));
         let runtime: Arc<dyn runtime::RuntimeAdapter> =
             Arc::from(runtime::create_runtime(&config.runtime)?);
         let security = Arc::new(SecurityPolicy::from_config(

@@ -174,8 +174,9 @@ where
 }
 
 async fn run_heartbeat_worker(config: Config) -> Result<()> {
-    let observer: std::sync::Arc<dyn crate::observability::Observer> =
-        std::sync::Arc::from(crate::observability::create_observer(&config.observability, &config.workspace_dir));
+    let observer: std::sync::Arc<dyn crate::observability::Observer> = std::sync::Arc::from(
+        crate::observability::create_observer(&config.observability, &config.workspace_dir),
+    );
     let engine = crate::heartbeat::engine::HeartbeatEngine::new(
         config.heartbeat.clone(),
         config.workspace_dir.clone(),

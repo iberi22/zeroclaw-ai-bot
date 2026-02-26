@@ -85,9 +85,13 @@ Key requirements for reliable tool calls:
 
 - Use the **native `minimax` provider**, not `anthropic-custom`, to avoid
   Anthropic-to-OpenAI schema translation mismatches.
+- Enable reasoning split for MiniMax-M2.5 tool loops (`extra_body.reasoning_split=true`)
+  when using OpenAI-compatible clients.
 - Keep tool descriptions short and unambiguous (< 80 chars per field description).
 - Provide a `system` prompt that explicitly instructs the model to call tools
   when relevant, and to return valid JSON arguments.
+- Preserve assistant tool-call payloads and return tool results with
+  `role="tool"` + exact `tool_call_id` values.
 
 ## Verify Setup
 

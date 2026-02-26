@@ -1,6 +1,6 @@
-use std::path::PathBuf;
 use crate::observability::traits::{Observer, ObserverEvent, ObserverMetric};
 use crate::resilience;
+use std::path::PathBuf;
 
 pub struct ResilienceObserver {
     workspace_dir: PathBuf,
@@ -18,7 +18,7 @@ impl Observer for ResilienceObserver {
             resilience::report_task(
                 &format!("Observed Error in {}", component),
                 &format!("Automated report from ResilienceObserver: {}", message),
-                &self.workspace_dir
+                &self.workspace_dir,
             );
         }
     }

@@ -459,8 +459,9 @@ pub async fn run_gateway(host: &str, port: u16, config: Config) -> Result<()> {
     crate::health::mark_component_ok("gateway");
 
     // Build shared state
-    let observer: Arc<dyn crate::observability::Observer> =
-        Arc::from(crate::observability::create_observer(&config.observability, &config.workspace_dir));
+    let observer: Arc<dyn crate::observability::Observer> = Arc::from(
+        crate::observability::create_observer(&config.observability, &config.workspace_dir),
+    );
 
     let state = AppState {
         config: config_state,

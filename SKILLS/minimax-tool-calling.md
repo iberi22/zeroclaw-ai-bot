@@ -49,6 +49,9 @@ parallel, the response order can mismatch the ID sequence and the provider rejec
 the conversation with an "invalid tool ID" error. Setting `parallel_tools = false`
 enforces sequential dispatch and eliminates this class of error.
 
+ZeroClaw's MiniMax-compatible provider should also send `reasoning_split=true`
+in OpenAI-compatible payloads to keep reasoning/tool output stable.
+
 ## Common Errors and Fixes
 
 | Error | Cause | Fix |
