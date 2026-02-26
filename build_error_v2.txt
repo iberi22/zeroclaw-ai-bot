@@ -1,0 +1,50 @@
+warning: unused import: `File`
+ --> src\config\schema.rs:7:21
+  |
+7 | use std::fs::{self, File, OpenOptions};
+  |                     ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `PathBuf`
+ --> src\resilience.rs:1:23
+  |
+1 | use std::path::{Path, PathBuf};
+  |                       ^^^^^^^
+
+warning: `zeroclaw` (lib) generated 2 warnings (run `cargo fix --lib -p zeroclaw` to apply 2 suggestions)
+    Checking zeroclaw v0.1.0 (E:\scripts-python\zeroclaw)
+error[E0432]: unresolved import `crate::resilience`
+ --> src\observability\resilience.rs:3:5
+  |
+3 | use crate::resilience;
+  |     ^^^^^^^^^^^^^^^^^ no `resilience` in the root
+  |
+help: consider importing one of these modules instead
+  |
+3 | use crate::observability::resilience;
+  |            +++++++++++++++
+3 - use crate::resilience;
+3 + use zeroclaw::observability::resilience;
+  |
+3 - use crate::resilience;
+3 + use zeroclaw::resilience;
+  |
+
+warning: unused imports: `ChannelMessage` and `MessageAttachment`
+  --> src\channels\mod.rs:30:27
+   |
+30 | pub use traits::{Channel, ChannelMessage, MessageAttachment, SendMessage};
+   |                           ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `File`
+ --> src\config\schema.rs:7:21
+  |
+7 | use std::fs::{self, File, OpenOptions};
+  |                     ^^^^
+
+For more information about this error, try `rustc --explain E0432`.
+warning: `zeroclaw` (bin "zeroclaw") generated 2 warnings
+error: could not compile `zeroclaw` (bin "zeroclaw") due to 1 previous error; 2 warnings emitted

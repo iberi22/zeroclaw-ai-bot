@@ -1,0 +1,415 @@
+warning: unused import: `File`
+ --> src\config\schema.rs:7:21
+  |
+7 | use std::fs::{self, File, OpenOptions};
+  |                     ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `PathBuf`
+ --> src\resilience.rs:1:23
+  |
+1 | use std::path::{Path, PathBuf};
+  |                       ^^^^^^^
+
+warning: `zeroclaw` (lib) generated 2 warnings (run `cargo fix --lib -p zeroclaw` to apply 2 suggestions)
+   Compiling zeroclaw v0.1.0 (E:\scripts-python\zeroclaw)
+warning: unused imports: `ChannelMessage` and `MessageAttachment`
+  --> src\channels\mod.rs:30:27
+   |
+30 | pub use traits::{Channel, ChannelMessage, MessageAttachment, SendMessage};
+   |                           ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `File`
+ --> src\config\schema.rs:7:21
+  |
+7 | use std::fs::{self, File, OpenOptions};
+  |                     ^^^^
+
+error[E0308]: mismatched types
+    --> src\channels\mod.rs:2378:24
+     |
+2378 |             calls.push(snapshot);
+     |                   ---- ^^^^^^^^ expected `Vec<(String, String)>`, found `Vec<(String, StringContent)>`
+     |                   |
+     |                   arguments to this method are incorrect
+     |
+     = note: expected struct `Vec<(std::string::String, std::string::String)>`
+                found struct `Vec<(std::string::String, StringContent)>`
+note: method defined here
+    --> /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234\library\alloc\src\vec\mod.rs:2563:12
+
+error[E0308]: mismatched types
+    --> src\channels\mod.rs:2378:24
+     |
+2378 |             calls.push(snapshot);
+     |                   ---- ^^^^^^^^ expected `Vec<(String, String)>`, found `Vec<(String, StringContent)>`
+     |                   |
+     |                   arguments to this method are incorrect
+     |
+     = note: expected struct `Vec<(std::string::String, std::string::String)>`
+                found struct `Vec<(std::string::String, providers::traits::StringContent)>`
+note: method defined here
+    --> /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234\library\alloc\src\vec\mod.rs:2563:12
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:2489:13
+     |
+2489 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:2541:13
+     |
+2541 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:2602:13
+     |
+2602 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0308]: mismatched types
+    --> src\channels\mod.rs:2652:34
+     |
+2652 |             provider: Arc::clone(&provider),
+     |                       ---------- ^^^^^^^^^ expected `&Arc<dyn Provider>`, found `&Arc<ModelCaptureProvider>`
+     |                       |
+     |                       arguments to this function are incorrect
+     |
+     = note: expected reference `&std::sync::Arc<dyn providers::traits::Provider>`
+                found reference `&std::sync::Arc<ModelCaptureProvider>`
+     = help: `ModelCaptureProvider` implements `Provider` so you could box the found value and coerce it to the trait object `Box<dyn Provider>`, you will have to change the expected type as well
+note: method defined here
+    --> /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234\library\core\src\clone.rs:236:8
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:2683:13
+     |
+2683 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:2708:13
+     |
+2708 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:2782:13
+     |
+2782 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:2840:13
+     |
+2840 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:2893:13
+     |
+2893 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:2996:17
+     |
+2996 |         tx.send(traits::ChannelMessage {
+     |                 ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:3006:17
+     |
+3006 |         tx.send(traits::ChannelMessage {
+     |                 ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:3067:13
+     |
+3067 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:3327:19
+     |
+3327 |         let msg = traits::ChannelMessage {
+     |                   ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:3341:20
+     |
+3341 |         let msg1 = traits::ChannelMessage {
+     |                    ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:3349:20
+     |
+3349 |         let msg2 = traits::ChannelMessage {
+     |                    ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:3369:20
+     |
+3369 |         let msg1 = traits::ChannelMessage {
+     |                    ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:3377:20
+     |
+3377 |         let msg2 = traits::ChannelMessage {
+     |                    ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:3457:13
+     |
+3457 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\channels\mod.rs:3470:13
+     |
+3470 |             traits::ChannelMessage {
+     |             ^^^^^^^^^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `extra_bots` in initializer of `config::schema::TelegramConfig`
+    --> src\config\schema.rs:3261:32
+     |
+3261 |                 telegram: Some(TelegramConfig {
+     |                                ^^^^^^^^^^^^^^ missing `extra_bots`
+
+error[E0063]: missing field `integration` in initializer of `config::schema::Config`
+    --> src\config\schema.rs:3221:22
+     |
+3221 |         let config = Config {
+     |                      ^^^^^^ missing `integration`
+
+error[E0063]: missing field `integration` in initializer of `config::schema::Config`
+    --> src\config\schema.rs:3404:22
+     |
+3404 |         let config = Config {
+     |                      ^^^^^^ missing `integration`
+
+error[E0063]: missing field `extra_bots` in initializer of `config::schema::TelegramConfig`
+    --> src\config\schema.rs:3574:18
+     |
+3574 |         let tc = TelegramConfig {
+     |                  ^^^^^^^^^^^^^^ missing `extra_bots`
+
+error[E0063]: missing field `extra_bots` in initializer of `config::schema::TelegramConfig`
+  --> src\config\mod.rs:34:24
+   |
+34 |         let telegram = TelegramConfig {
+   |                        ^^^^^^^^^^^^^^ missing `extra_bots`
+
+error[E0063]: missing field `extra_bots` in initializer of `config::schema::TelegramConfig`
+   --> src\daemon\mod.rs:296:48
+    |
+296 |         config.channels_config.telegram = Some(crate::config::TelegramConfig {
+    |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ missing `extra_bots`
+
+error[E0063]: missing field `attachments` in initializer of `channels::traits::ChannelMessage`
+    --> src\gateway\mod.rs:1263:19
+     |
+1263 |         let msg = ChannelMessage {
+     |                   ^^^^^^^^^^^^^^ missing `attachments`
+
+error[E0063]: missing field `extra_bots` in initializer of `config::schema::TelegramConfig`
+   --> src\integrations\registry.rs:788:48
+    |
+788 |         config.channels_config.telegram = Some(TelegramConfig {
+    |                                                ^^^^^^^^^^^^^^ missing `extra_bots`
+
+error[E0308]: mismatched types
+   --> src\providers\anthropic.rs:886:26
+    |
+886 |                 content: "System prompt".to_string(),
+    |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+help: try wrapping the expression in `providers::traits::StringContent::String`
+    |
+886 |                 content: providers::traits::StringContent::String("System prompt".to_string()),
+    |                          +++++++++++++++++++++++++++++++++++++++++                           +
+
+error[E0308]: mismatched types
+   --> src\providers\anthropic.rs:890:26
+    |
+890 |                 content: "Hello".to_string(),
+    |                          ^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+help: try wrapping the expression in `providers::traits::StringContent::String`
+    |
+890 |                 content: providers::traits::StringContent::String("Hello".to_string()),
+    |                          +++++++++++++++++++++++++++++++++++++++++                   +
+
+error[E0308]: mismatched types
+   --> src\providers\anthropic.rs:894:26
+    |
+894 |                 content: "Hi".to_string(),
+    |                          ^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+help: try wrapping the expression in `providers::traits::StringContent::String`
+    |
+894 |                 content: providers::traits::StringContent::String("Hi".to_string()),
+    |                          +++++++++++++++++++++++++++++++++++++++++                +
+
+error[E0308]: mismatched types
+   --> src\providers\anthropic.rs:905:22
+    |
+905 |             content: "System prompt".to_string(),
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+help: try wrapping the expression in `providers::traits::StringContent::String`
+    |
+905 |             content: providers::traits::StringContent::String("System prompt".to_string()),
+    |                      +++++++++++++++++++++++++++++++++++++++++                           +
+
+error[E0308]: mismatched types
+   --> src\providers\anthropic.rs:911:26
+    |
+911 |                 content: format!("Message {i}"),
+    |                          ^^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+    = note: this error originates in the macro `format` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: call `Into::into` on this expression to convert `std::string::String` into `providers::traits::StringContent`
+    |
+911 |                 content: format!("Message {i}").into(),
+    |                                                +++++++
+
+error[E0308]: mismatched types
+   --> src\providers\anthropic.rs:924:26
+    |
+924 |                 content: format!("Message {i}"),
+    |                          ^^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+    = note: this error originates in the macro `format` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: call `Into::into` on this expression to convert `std::string::String` into `providers::traits::StringContent`
+    |
+924 |                 content: format!("Message {i}").into(),
+    |                                                +++++++
+
+error[E0308]: mismatched types
+   --> src\providers\anthropic.rs:932:22
+    |
+932 |             content: "One more".to_string(),
+    |                      ^^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+help: try wrapping the expression in `providers::traits::StringContent::String`
+    |
+932 |             content: providers::traits::StringContent::String("One more".to_string()),
+    |                      +++++++++++++++++++++++++++++++++++++++++                      +
+
+error[E0308]: mismatched types
+    --> src\providers\anthropic.rs:1049:22
+     |
+1049 |             content: "Short system prompt".to_string(),
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+     |
+help: try wrapping the expression in `providers::traits::StringContent::String`
+     |
+1049 |             content: providers::traits::StringContent::String("Short system prompt".to_string()),
+     |                      +++++++++++++++++++++++++++++++++++++++++                                 +
+
+error[E0308]: mismatched types
+    --> src\providers\anthropic.rs:1067:22
+     |
+1067 |             content: large_content.clone(),
+     |                      ^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+     |
+help: try wrapping the expression in `providers::traits::StringContent::String`
+     |
+1067 |             content: providers::traits::StringContent::String(large_content.clone()),
+     |                      +++++++++++++++++++++++++++++++++++++++++                     +
+
+error[E0308]: mismatched types
+   --> src\providers\anthropic.rs:911:26
+    |
+911 |                 content: format!("Message {i}"),
+    |                          ^^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+    = note: this error originates in the macro `format` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: call `Into::into` on this expression to convert `std::string::String` into `StringContent`
+    |
+911 |                 content: format!("Message {i}").into(),
+    |                                                +++++++
+
+error[E0308]: mismatched types
+   --> src\providers\anthropic.rs:924:26
+    |
+924 |                 content: format!("Message {i}"),
+    |                          ^^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+    = note: this error originates in the macro `format` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: call `Into::into` on this expression to convert `std::string::String` into `StringContent`
+    |
+924 |                 content: format!("Message {i}").into(),
+    |                                                +++++++
+
+error[E0599]: the method `as_deref` exists for enum `std::option::Option<NativeMessageContent>`, but its trait bounds were not satisfied
+    --> src\providers\compatible.rs:1726:41
+     |
+ 294 | enum NativeMessageContent {
+     | ------------------------- doesn't satisfy `NativeMessageContent: Deref`
+...
+1726 |         assert_eq!(converted[0].content.as_deref(), Some("done"));
+     |                                         ^^^^^^^^
+     |
+     = note: the following trait bounds were not satisfied:
+             `NativeMessageContent: Deref`
+note: the trait `Deref` must be implemented
+    --> /rustc/ded5c06cf21d2b93bffd5d884aa6e96934ee4234\library\core\src\ops\deref.rs:139:1
+
+error[E0308]: mismatched types
+    --> src\providers\compatible.rs:1920:22
+     |
+1920 |             content: "hello".to_string(),
+     |                      ^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+     |
+help: try wrapping the expression in `providers::traits::StringContent::String`
+     |
+1920 |             content: providers::traits::StringContent::String("hello".to_string()),
+     |                      +++++++++++++++++++++++++++++++++++++++++                   +
+
+error[E0308]: mismatched types
+   --> src\providers\router.rs:414:22
+    |
+414 |             content: "use tools".to_string(),
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+help: try wrapping the expression in `providers::traits::StringContent::String`
+    |
+414 |             content: providers::traits::StringContent::String("use tools".to_string()),
+    |                      +++++++++++++++++++++++++++++++++++++++++                       +
+
+error[E0308]: mismatched types
+   --> src\providers\router.rs:445:22
+    |
+445 |             content: "reason about this".to_string(),
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `StringContent`, found `String`
+    |
+help: try wrapping the expression in `providers::traits::StringContent::String`
+    |
+445 |             content: providers::traits::StringContent::String("reason about this".to_string()),
+    |                      +++++++++++++++++++++++++++++++++++++++++                               +
+
+Some errors have detailed explanations: E0063, E0308, E0599.
+For more information about an error, try `rustc --explain E0063`.
+warning: `zeroclaw` (bin "zeroclaw" test) generated 3 warnings (3 duplicates)
+error: could not compile `zeroclaw` (bin "zeroclaw" test) due to 41 previous errors; 3 warnings emitted
+warning: build failed, waiting for other jobs to finish...
+warning: `zeroclaw` (lib test) generated 2 warnings (2 duplicates)
+error: could not compile `zeroclaw` (lib test) due to 41 previous errors; 2 warnings emitted
+error: linking with `link.exe` failed: exit code: 1318
+  |
+  = note: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe" "/NOLOGO" "C:\\Users\\belal\\AppData\\Local\\Temp\\rustcTV2l84\\symbols.o" "<257 object files omitted>" "C:\\Users\\belal\\.cargo\\target_global\\debug\\deps/{libzeroclaw-ee28b3efd6863ca3,liburlencoding-309cf5a426be0d56,libshellexpand-0d0921f6c3c41f51,libdirs-e9a8f1b7a9e75e80,libhex-f10f2a3d482f5ec9,libchrono_tz-0405646cd4bb4a11,libphf-dd944dc52f9e8d51,libphf_shared-47f685179e391a3e,libtoml-24e8ed264025f8db,libtoml_writer-7f3d2c36ce4ca108,libtoml_parser-b050500d87221ea1,libwinnow-56d2e9f1707c45ae,libserde_spanned-a98f712d5b156489,libtoml_datetime-254aa9617f8baaf4,libhostname-f65ae0f23d060dbd,libtokio_serial-1248ab25aa8e2d14,libmio_serial-a0eb4fc8dc66e654,libserialport-6a6e88427085e0fa,libwinapi-eb6777ce9bd4b2cf,libprometheus-e2409b8f1d210172,libopentelemetry_otlp-39c4859c59596e11,libopentelemetry_proto-74dec9b0eb4015ad,libopentelemetry_sdk-407621dd8a160537,libopentelemetry_http-ab60c58643757aa6,libopentelemetry-d973aa5d69562a07,libpostgres-0aa6e4eb7618dfb1,libtokio_postgres-2c169ac33e9d7dd1,libphf-3dfb663c76a881dc,libphf_shared-966ce3f28e465aff,libsiphasher-dd172895a03458ff,libwhoami-472cf809e72caea3,libpostgres_types-af3fa883eb7fc97a,libpostgres_protocol-3c31a3e1650c5d88,libstringprep-68c3681fc10fadac,libunicode_properties-5a7f8af0f1da96fa,libunicode_bidi-4933068af3ed4a45,libmd5-6debf8e8dc7caa74,libfallible_iterator-12ae691c830bdebb,libnusb-d637fa780425e773,libcron-5f7012829bf9ad39,libwinnow-8028b16764daa0a9,libmatrix_sdk-026d0e63bb8f73ec,libmime2ext-9ec1194652a04453,libasync_stream-dad7c1ec458a051f,libbackon-f451bca037e5ddb9,libbytesize-2d3277e088f90a78,libanymap2-a3f79fd4f4f1224e,liblanguage_tags-4303b1fa96fca045,liboauth2-95f540541113fe00,libmatrix_sdk_base-e1cc428f6fc1456a,libdecancer-6a225252da635a65,libgrowable_bloom_filter-551f12c628692329,libxxhash_rust-0ec2561ffaf5a2a9,libmatrix_sdk_store_encryption-36dea2f214628e99,libblake3-355d3a4c32304f60,libconstant_time_eq-ca53846284c04108,libarrayref-88affe919abd9a24,libunicode_normalization-a33b75f7b306de89,libtinyvec-4c5c7d0fee0a1774,libtinyvec_macros-5292a340c90626ec,libmatrix_sdk_crypto-77c02a7fd6d0a490,librmp_serde-096d10e30f0bcdc3,librmp-a7aaa6e61acf3b73,libulid-f1adeda324896de7,libbs58-6dad781b2cdfbc53,libtokio_stream-1704118013c92986,libitertools-1d170a4bbff7b68c,libeither-a4b5f0253ee10226,libpbkdf2-2b322385560b9616,libctr-1d6f7601d98fa23d,libvodozemac-bb17113d80fb6ed2,libcbc-11335150bf29e821,libarrayvec-1ba99058da54f6bb,libprost-9b784849875c3bda,libserde_bytes-3ec165a2382194d0,libed25519_dalek-114277ff61c25bee,libed25519-b013357befe61256,libsignature-58ac5c7ad15a937d,libbase64ct-19c5ae989fd2419e,libx25519_dalek-cf8dfcd4d4cc1a6e,libcurve25519_dalek-4a742c3b6bcee10d,libmatrix_pickle-fc45d4e8d626e346,libhkdf-0deab17b7752bbfc,libhmac-2dc429641e2f0c50,libaes-6af243833f4a2a96,libeyeball-c10308f5474f66aa,libreadlock_tokio-acf6fab70e103d6f,libreadlock-f02e7f328c27d17d,libmatrix_sdk_common-3fd020968982c196,libeyeball_im-d2ad4c7de74e9b3b,libimbl-2383f64bf0001eb4,librand_xoshiro-b8fda646a57e9758,libimbl_sized_chunks-7b855e89b0d50dec,libbitmaps-387abb24cf6970ce,libarchery-556bfba8c6da7e2c,libruma-3fa9f755e37c4161,libruma_client_api-4d3290c272512790,libdate_header-d2be91ea92fbf887,libassign-63681c1ba8d4437a,libmaplit-78550bb3d2c71d1b,libruma_events-3b487391fd35c177,libjs_option-194c9d0f19561130,libruma_common-b8baf5f233d394c6,libserde_html_form-4dd04ecd05de353e,libweb_time-1c8c2126c3273c71,libtime-f2cacec2a8567c49,libtime_core-8c8309d7c4097f74,libnum_conv-1f9f502691668411,libderanged-84036300ac3fc539,libpowerfmt-27c542e32633565c,libwildmatch-6931b4b064873481,libruma_identifiers_validation-1d958fc856fcd918,libjs_int-f437c0fa8163bd81,libkonst-2caa1aec48a83f2e,libconst_panic-33541ceb43280c6f,libkonst_kernel-927b3a36770e90c1,libtypewit-ec8d556d08433c6a,libas_variant-7321a97c26c36208,libaxum-743878d13402220c,libserde_path_to_error-505fc1af16225656,libmatchit-9628ec020dc768b5,libtokio_tungstenite-866a8e2c5e9a964a,libtungstenite-ca4d4d054e3a90fa,librand-104c66b8aa00b6f3,librand_chacha-0e635ef2911ecd8a,librand_core-ee5a04223e6c4f56,libgetrandom-f85d459d11754700,libthiserror-a5f224c4ec9d5e5e,libaxum_core-636bf63404ecadbd,libprost-75e513ceb61c09fc,librusqlite-fb26500f85612cf3,libhashlink-1d38135f2fb3c797,libhashbrown-4395fa4debd43f74,libfoldhash-867a1a2b2c73885e,liblibsqlite3_sys-353b79c6d15938cc,libfallible_streaming_iterator-ec298ccb3183597c,libfallible_iterator-a5631229f9d23681,libdirectories-0d9d4230d39f720d,libdirs_sys-2be4343d36ee3320,liboption_ext-5ba11747332b2d65,libmail_parser-871d6aa95544c17f,liblettre-4aee171b1ebc4497,libquoted_printable-8312cae9b6a26ca2,libnom-c8cf22769f2fba6a,libchumsky-ab2d05833394f6e4,libstacker-d612304e32e5cfa9,libpsm-2343c3d215e7200a,libwindows_sys-2de019955ffc8210,libwindows_targets-feacb24f334a2eb5,liblibc-37eaf722cbb6eb7b,libhashbrown-395676145e97091f,libahash-d153e9eb37830ce4,liballocator_api2-8865e6a00b4e72ee,libemail_encoding-124466a2671c5075,libemail_address-a78fb1e9c120d1c7,libasync_imap-b25ea4910d820e2d,libself_cell-3b6e39828c58f82f,libstop_token-530864ba4fb7b91e,libasync_channel-1a7d41e3d007c0fc,libevent_listener-961ed5c364939de3,libfutures-59a9cdfbd9bae37f,libfutures_executor-265bcd56fcb79cf9,libasync_channel-5242d0336b7e7372,libevent_listener_strategy-c1e22acf24d2d264,libevent_listener-c1410c909568eee8,libparking-c735e0a47a129d3f,libconcurrent_queue-ff0dc596876b8b2c,libcrossbeam_utils-3ff13b653acdd74a,libimap_proto-eb6b3acbae563f7f,libnom-8e63cd88ab444e2c,libtokio_tungstenite-688460122b79941f,libwebpki_roots-96c4f21e7bbc7087,libtungstenite-275de3d8821bb0f2,libdata_encoding-bcb653b821ecc0a1,librand-d9e2f261fa859d04,librand_chacha-cc03f2d22029e51b,libppv_lite86-fd349458a0c307d1,libzerocopy-0d8c566416259211,libutf8-478eb2d2c1dc9cf5,libbyteorder-09744153230ade1e,libsha1-6a52c004712c13a3,libthiserror-4a90c2b75ac6a407,libchacha20poly1305-2aa1e90abe3e78a9,libchacha20-5af14ca59058d1b0,libpoly1305-15db85d23e6cd697,libopaque_debug-cca8659c91272b3f,libuniversal_hash-7304f5a1b131c8ff,libaead-9b1a30b2980187e2,libcipher-42baaaa2f7a80d2e,libinout-ec441741d4875f4d,libblock_padding-66c987a41ea73cb8,libsha2-02c54ec7df2ebde1,libcpufeatures-e9f6add8b507f973,libdigest-43a39d10009effa1,libblock_buffer-f1f723d2599b8dfe,libcrypto_common-ee009459642bfdec,libgeneric_array-cce1c4e4e6da38e2,libtypenum-920810a2f37c4ed0,librand_core-a2a9287770e893af,libreqwest-69881fa71bc145f8,libhyper_rustls-243fcc6ee91c2ec8,libwebpki_roots-c484749efea3587f,libtokio_rustls-fe58bf39d0a05531,librustls-c529ab8a4e07919b,libsubtle-e2b177043a6b6f0a,libwebpki-13ca2ac3d18e31aa,libaws_lc_rs-c2c6f4e8f509249e,libaws_lc_sys-2dfea0cabdb9ac43,libring-93a1b66089e30a48,libgetrandom-d6f49d7f45464dd5,libuntrusted-4985f342df21c97f,librustls_pki_types-e5ae20cba8ef821c,libserde_urlencoded-7b8300b1b10b02bf,libryu-0c350e53b4b79049,libmime_guess-d09534aeeab2e941,libunicase-98f5ca4c14e2174c,libmime-71952044ed9caabf,libtower_http-8fb53a95f86ef649,libbitflags-8703f7356452da55,libiri_string-70336075d8d48f68,libasync_compression-493fa7c053e7f228,libcompression_codecs-d2ce9ac9bb28ac48,libflate2-f342b9f4c6318fa4,libminiz_oxide-f58f30678d34b3c5,libsimd_adler32-56996c66490cf066,libcrc32fast-d357259aaaa68be0,libcompression_core-fe151e3014141a31,libtower-d3aa3fb9bc5bd9b8,libtower_layer-c370d20590c96d35,libhyper_util-f225cf5ec2197aec,libipnet-a4d211ab97e1585d,libtower_service-15f3e003cf29b283,libhyper-1d1830becc7b6e31,libwant-92afac76a0d88994,libtry_lock-283152f0c8cadb77,libhttparse-ef40dbe32d5fbd61,libh2-d27323d0326b76d3,libindexmap-b0203d7024f09dec,libequivalent-3b13bca411cdf860,libhashbrown-a287707bef0417c6,libfnv-5107d17ea291695c,libpin_utils-1031b741708e9025,libatomic_waker-0cc2f644b7474aaa,libhttpdate-29845da3ff373b2b,libtokio_util-2a2e3272a8e81f82,libtokio-e0d38e5dd7da4f23,libsocket2-8e8ce2efc67f305a,libwindows_sys-cd2c82888eea628b,libwindows_targets-222a37f12487ea30,libmio-68c9e482795ffbaf,libhttp_body_util-305ce3cb18a9a712,libhttp_body-67e17bf4275d79ec,liblog-9988572824fc4622,libfutures_util-fce0a6a4ed54ced9,libfutures_io-9fcc574ce56de9e8,libslab-dfbaf2518a3169cd,libfutures_channel-90c2f7b5f5418999,libfutures_sink-47a19bf6a3133a76,libfutures_task-9dbccf16955e305e,liburl-902e9ac022fb0489,libidna-10ffce6b01e66085,libutf8_iter-4ff161950296d652,libidna_adapter-787669ebf5569384,libicu_properties-46ef06fca3c5eb1a,libicu_properties_data-8f61784870f1377a,libicu_normalizer-af86bd634a7aec0f,libicu_normalizer_data-9dd219bb2ff8d1e3,libicu_collections-780dcba8b7c25ab8,libpotential_utf-68a3c74b28c9e28c,libicu_provider-381e0d2a0ca8cd45,libicu_locale_core-3e4f0b548396577e,libtinystr-dcb14b06b6e23ca6,liblitemap-29a96c48ca2edefa,libwriteable-2f127b60e06f9fb1,libzerovec-f3e1999b52917906,libzerotrie-0260c43646da52e1,libyoke-58188b9456882f94,libstable_deref_trait-3e1c3634abdbeffa,libzerofrom-b9f666411194774e,libform_urlencoded-d89be7d9a49bb1d6,libpercent_encoding-503c068a1cd7389b,libhttp-03b3f727ce790832,libbytes-1c230b8faab3b317,libsync_wrapper-5f196b2444115081,libfutures_core-636b089ad44bc36e,libbase64-01063cccf8caaaf8,libparking_lot-4452ff18786bde40,libparking_lot_core-199201fdbff2827c,libsmallvec-4f410f879c85c5e5,liblock_api-2da57b7de5898c15,libscopeguard-03baf857aac0a872,libchrono-64511c5830fdafca,libnum_traits-b28177a24dadfb4b,libuuid-3dbedad2a4824489,libregex-90209af38b43b789,libserde_json-f51db326b42948a0,libitoa-b6569403e6bb5399,libzmij-9b7aaec26d4ec5a1,libtracing_subscriber-80fdc645fcde2347,libsharded_slab-9888fdcc3c245f58,liblazy_static-e787aea162c998f3,libmatchers-75cfa316da81576c,libregex_automata-62607f5555a690bd,libaho_corasick-48d1062b4bb75357,libmemchr-c5693ca0e0eae9f9,libregex_syntax-54a94ad549246cf0,libnu_ansi_term-08d992a1a9bc0c39,libtracing-dd7d1d3e60c839db,libpin_project_lite-ddac7feb6ac14d2f,libtracing_core-970d97eb9aaa6ed3,libserde-7e938fd86659acfb,libserde_core-ae09f5b26978cbab,libdialoguer-741a87bcc49346c6,libshell_words-8f83ab5915ccf5a3,libtempfile-655327c37d6c03f6,libgetrandom-31bd04986108cc0a,libfastrand-51fb76fe43838c33,libzeroize-593c645ee21c6e1e,libfuzzy_matcher-b6f0fac8e6b725f4,libthread_local-47bd14c3dda04cb5,libcfg_if-4316c8dd3aae8aa0,libconsole-fe64127186bb239b,libencode_unicode-8cf08744ec7487d4,libunicode_width-c914c3372cc506e4,libonce_cell-5bbd183c350e7435,libclap-5edb27a7d72cc586,libclap_builder-e24727163405fa15,libstrsim-d30eefe862b2d37f,libanstream-e3797d078747a401,libanstyle_query-cbbb496d7c11faed,libis_terminal_polyfill-65ad116a661316b0,libanstyle_wincon-4c1535431cef9382,libonce_cell_polyfill-23e0d7f91dbd24e2,libwindows_sys-c408298a03a6a661,libwindows_link-ce4f0b2c15c7b075,libcolorchoice-8ee9457866e8fcbb,libanstyle_parse-7088f00e0ead743e,libutf8parse-af741cd41f1cd673,libclap_lex-baa5df45d4159ec3,libanstyle-b2b9afaa8488dc8b,libanyhow-9802949dd76b1ae7}.rlib" "<sysroot>\\lib\\rustlib\\x86_64-pc-windows-msvc\\lib/{libstd-*,libpanic_unwind-*,libcfg_if-*,libwindows_targets-*,librustc_demangle-*,libstd_detect-*,libhashbrown-*,librustc_std_workspace_alloc-*,libunwind-*,librustc_std_workspace_core-*,liballoc-*,libcore-*,libcompiler_builtins-*}.rlib" "advapi32.lib" "cfgmgr32.lib" "comctl32.lib" "gdi32.lib" "kernel32.lib" "msimg32.lib" "opengl32.lib" "setupapi.lib" "user32.lib" "winspool.lib" "secur32.lib" "advapi32.lib" "kernel32.lib" "C:\\Users\\belal\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows_x86_64_msvc-0.52.6\\lib\\windows.0.52.0.lib" "legacy_stdio_definitions.lib" "bcrypt.lib" "advapi32.lib" "C:\\Users\\belal\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows_x86_64_msvc-0.53.1\\lib\\windows.0.53.0.lib" "kernel32.lib" "kernel32.lib" "kernel32.lib" "ntdll.lib" "userenv.lib" "ws2_32.lib" "dbghelp.lib" "/defaultlib:msvcrt" "/NXCOMPAT" "/LIBPATH:C:\\Users\\belal\\.cargo\\target_global\\debug\\build\\stacker-71970cb5cdf33013\\out" "/LIBPATH:C:\\Users\\belal\\.cargo\\target_global\\debug\\build\\psm-b6b6c13509f3e29b\\out" "/LIBPATH:C:\\Users\\belal\\.cargo\\target_global\\debug\\build\\aws-lc-sys-37e60c7e9b2174b3\\out" "/LIBPATH:C:\\Users\\belal\\.cargo\\target_global\\debug\\build\\ring-23a592af763993f7\\out" "/LIBPATH:C:\\Users\\belal\\.cargo\\target_global\\debug\\build\\blake3-50ab549922b566c4\\out" "/LIBPATH:C:\\Users\\belal\\.cargo\\target_global\\debug\\build\\libsqlite3-sys-339090ffaf8da08d\\out" "/LIBPATH:C:\\Users\\belal\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows_x86_64_msvc-0.53.1\\lib" "/LIBPATH:C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\atlmfc\\lib\\x64" "/LIBPATH:C:\\Users\\belal\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows_x86_64_msvc-0.52.6\\lib" "/OUT:C:\\Users\\belal\\.cargo\\target_global\\debug\\deps\\zeroclaw.exe" "/OPT:REF,NOICF" "/DEBUG" "/PDBALTPATH:%_PDB%" "/NATVIS:<sysroot>\\lib\\rustlib\\etc\\intrinsic.natvis" "/NATVIS:<sysroot>\\lib\\rustlib\\etc\\liballoc.natvis" "/NATVIS:<sysroot>\\lib\\rustlib\\etc\\libcore.natvis" "/NATVIS:<sysroot>\\lib\\rustlib\\etc\\libstd.natvis"
+  = note: some arguments are omitted. use `--verbose` to show all linker arguments
+  = note:    Creando biblioteca C:\Users\belal\.cargo\target_global\debug\deps\zeroclaw.lib y objeto C:\Users\belal\.cargo\target_global\debug\deps\zeroclaw.expÔÉì
+          LINK : fatal error LNK1318: Error de PDB no esperado; LIMIT (12) ''ÔÉì
+          
+
+warning: `zeroclaw` (bin "zeroclaw") generated 3 warnings (1 duplicate)
+error: could not compile `zeroclaw` (bin "zeroclaw") due to 1 previous error; 3 warnings emitted
